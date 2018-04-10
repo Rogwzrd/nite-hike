@@ -1,5 +1,5 @@
 import React from 'react'
-import Login from './Login'
+import Login from './LoginSpace'
 import svgMoon from '../images/moon.svg'
 
 const styles = {

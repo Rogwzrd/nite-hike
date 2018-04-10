@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../models/index');
+const db = require('../models');
 
 
 // middleware that is specific to this router
@@ -12,6 +12,7 @@ router.use(function timeLog (req, res, next) {
 
 // Create a new user
 router.post('/addUser', (req, res)=>{
+    console.log(req)
     console.log('create user request body', req.body);
     db.User
         .create(req.body)
@@ -24,6 +25,9 @@ router.post('/addUser', (req, res)=>{
 
 //get all users
 router.get('/allUsers', (req, res)=>{
+
+    console.log(db.User.modelName);
+
     db.User
     .find({})
     .then((data) => res.status(200).send(data))

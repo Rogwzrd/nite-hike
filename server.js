@@ -37,6 +37,18 @@ const userRoute = require('./api/userApi');
 // };
 
 
+// instantiate express
+const app = express();
+
+// set bodyParser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+
+//set public files
+app.use(express.static(path.join(__dirname, 'client/public')));
+
+
 // set mongoose database loaction
 mongoose.Promise = Promise;
 const MONGODB_URI = process.env.MONGrsODB_URI || "mongodb://localhost/nightHikeDb";
@@ -45,6 +57,8 @@ const MONGODB_URI = process.env.MONGrsODB_URI || "mongodb://localhost/nightHikeD
 mongoose.connect(MONGODB_URI);
 
 const db = mongoose.connection;
+
+// test connection
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
     console.log('database connected')
@@ -52,11 +66,7 @@ db.once('open', function() {
 
 // const schema = makeExecutableSchema({typeDefs, resolvers});
 
-// instantiate express
-const app = express();
 
-//set public files
-app.use(express.static(path.join(__dirname, 'client/public')));
 
 // set graphql
 // app.use('/graphql', bodyParser.json(), graphqlExpress({schema}));

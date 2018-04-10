@@ -5,6 +5,7 @@ import Header from './Header'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import ButtonPage from './ButtonPage'
 import Landing from './Landing'
+import Profile from './Profile'
 
 let Main = ({ ...props}) => (
           <Router>
@@ -12,6 +13,7 @@ let Main = ({ ...props}) => (
             <Header/>
             <Route exact path={'/'} component={Landing}/>
             <Route exact path={'/buttons'} component={ButtonPage}/>
+            <Route exace path-={'/profile'} component={Profile} />
             </div>
           </Router>
 )

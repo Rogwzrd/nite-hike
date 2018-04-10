@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
 
 const ButtonPage = (props)=>{
-    console.log(props)
+    console.log(props);
     return(
             <div>
                 <Button title={"incerement up"} onClick={props.incrementReduc}/>
@@ -19,7 +19,7 @@ const ButtonPage = (props)=>{
               </div>
             </div>
 )
-}
+};
 
 
 const mapStateToProps = state =>{
@@ -27,10 +27,10 @@ const mapStateToProps = state =>{
         points: state.mathApp.points,
         clicks: state.mathApp.clicks,
     })
-}
+};
   
 const mapDispatchToProps = dispatch =>{
     return bindActionCreators(actionCreators, dispatch);
-}
+};
 
   export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ButtonPage));

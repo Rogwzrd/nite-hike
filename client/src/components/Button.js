@@ -9,4 +9,4 @@ Button.propTypes = {
     onClick : PropTypes.func.isRequired,
     title : PropTypes.string.isRequired
 }
-export default Button
+export default Button;
