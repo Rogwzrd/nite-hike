@@ -24,7 +24,9 @@
     "google-auth-library": "^1.4.0",
     "graphql": "^0.13.2",
     "graphql-tools": "^2.23.1",
-    "mongoose": "^5.0.13",
-    "nodemon": "^1.17.2"
+    "mongoose": "^5.0.13"
+  },
+  "devDependencies": {
+  "nodemon": "^1.17.2"
   }
 }
