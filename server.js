@@ -47,7 +47,7 @@ app.use(bodyParser.json());
 
 
 //set public files
-app.use(express.static(path.join(__dirname, 'client/public')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 
 // set mongoose database loaction
@@ -66,8 +66,6 @@ db.once('open', function() {
 });
 
 // const schema = makeExecutableSchema({typeDefs, resolvers});
-
-
 
 // set graphql
 // app.use('/graphql', bodyParser.json(), graphqlExpress({schema}));
