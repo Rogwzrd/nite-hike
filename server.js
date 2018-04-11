@@ -6,6 +6,7 @@ const { makeExecutableSchema } = require('graphql-tools');
 const mongoose = require('mongoose');
 const userRoute = require('./api/userApi');
 
+const PORT = process.env.PORT || 4000;
 
 // const typeDefs = [`
 // type Query {
@@ -81,4 +82,4 @@ app.use('/', (req, res) => {
 });
 
 // start server
-app.listen(4000, () => console.log('Now browse to localhost:4000/'));
+app.listen(PORT, () => console.log(`Now browse to localhost:${PORT}/`));
