@@ -75,5 +75,9 @@ db.once('open', function() {
 // set api routing
 app.use('/api/users', userRoute);
 
+app.use('/', (req, res) => {
+    res.sendFile(path.join(__dirname, "client/build/index.html"));
+});
+
 // start server
 app.listen(4000, () => console.log('Now browse to localhost:4000/'));

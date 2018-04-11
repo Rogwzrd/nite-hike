@@ -10,8 +10,6 @@ import store from '../store'
 class Profile extends Component{
 
     componentDidMount=()=>{
-       const { dispatch } = this.props;
-        console.log('component mounted');
         store.dispatch(fetchUsers())
     };
 
@@ -47,7 +45,6 @@ const mapDispatchToProps = dispatch =>{
 };
 
 Profile.propTypes = {
-    error : PropTypes.string.isRequired,
     users : PropTypes.array.isRequired,
     loading: PropTypes.bool.isRequired
 };
