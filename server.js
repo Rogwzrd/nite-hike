@@ -51,7 +51,7 @@ app.use(express.static(path.join(__dirname, 'client/public')));
 
 // set mongoose database loaction
 mongoose.Promise = Promise;
-const MONGODB_URI = process.env.MONGrsODB_URI || "mongodb://localhost/nightHikeDb";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nightHikeDb";
 
 // connect db
 mongoose.connect(MONGODB_URI);
@@ -75,6 +75,7 @@ db.once('open', function() {
 // set api routing
 app.use('/api/users', userRoute);
 
+//send user to client build
 app.use('/', (req, res) => {
     res.sendFile(path.join(__dirname, "client/build/index.html"));
 });
