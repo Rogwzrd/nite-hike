@@ -1,6 +1,7 @@
 import React from 'react'
 import Login from './LoginSpace'
 import svgMoon from '../images/moon.svg'
+import { Link } from 'react-router-dom'
 
 const styles = {
     main:{
@@ -16,22 +17,40 @@ const styles = {
         display: 'flex',
         justifyContent: "center",
         alignItems: 'center',
-        fontWeight: '700'
+        fontWeight: '700',
     },
     moon: {
         height: '20px',
         width: '20px'
+    },
+    logoText:{
+        margin: "0",
+        leftPadding: "5px"
     }
 
-}
-const Header = (...props) =>(
+};
+const Header = () =>(
     <header style={styles.main}>
         <div style={styles.logoDiv}>
             <img style={styles.moon} src={svgMoon} alt={'moon'} className='App-logo'/>
-            <p>Night Hike</p>
+            <Link to={'/'}>
+                <p style={styles.logoText}>Night Hike</p>
+            </Link>
+        </div>
+        <div className={"btn-group"} role="group" aria-label="Basic example">
+                <Link to={"/profile"}>
+                    <button type="button" className="btn btn-secondary">
+                        Profile
+                    </button>
+                </Link>
+            <Link to={"/buttons"}>
+                <button type="button" className="btn btn-secondary">
+                    buttons
+                </button>
+            </Link>
         </div>
         <Login/>
     </header>
-)
+);
 
 export default Header;

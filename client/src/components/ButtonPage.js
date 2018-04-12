@@ -10,7 +10,7 @@ const ButtonPage = (props)=>{
     console.log(props);
     return(
             <div>
-                <Button title={"incerement up"} onClick={props.incrementReduc}/>
+                <Button title={"increment up"} onClick={props.incrementReduc}/>
                 <Button title={"decrement down"} onClick={props.decrementReduc}/>
                 <br/>
                 <div style={{background: 'grey'}}>

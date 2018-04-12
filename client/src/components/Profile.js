@@ -10,7 +10,7 @@ import store from '../store'
 class Profile extends Component{
 
     componentDidMount=()=>{
-        store.dispatch(fetchUsers())
+        this.props.fetchUsers();
     };
 
     render(){
@@ -24,11 +24,13 @@ class Profile extends Component{
         }
 
         return(
-            <ul>
-                { users.map(user =>
-                    <li key={user._id}>{user.name}</li>
-                ) }
-            </ul>
+            <div className={"container"}>
+                <div className={'row bg-light'}>
+                    { users.map(user =>
+                        <div className={'col-12 col-sm-6'} key={user._id}>{user.name}</div>
+                    ) }
+                </div>
+            </div>
         )
     }
 }
@@ -46,7 +48,8 @@ const mapDispatchToProps = dispatch =>{
 
 Profile.propTypes = {
     users : PropTypes.array.isRequired,
-    loading: PropTypes.bool.isRequired
+    loading: PropTypes.bool.isRequired,
+    error: PropTypes.func
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Profile));

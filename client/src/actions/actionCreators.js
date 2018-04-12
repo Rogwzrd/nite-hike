@@ -25,8 +25,7 @@ export const fetchUsersFailure = ( error ) =>({
     payload: { error }
 });
 
-export function fetchUsers(){
-    return dispatch =>{
+export const fetchUsers = () => dispatch =>{
         dispatch(fetchUsersBegin());
         return fetch('/api/users/allUsers')
             .then(handleErrors)
@@ -37,8 +36,8 @@ export function fetchUsers(){
                 return json;
             })
             .catch(error => dispatch(fetchUsersFailure(error)))
-    }
-}
+    };
+
 
 function handleErrors(res){
     if(!res.ok){
