@@ -12,8 +12,7 @@ router.use(function timeLog (req, res, next) {
 
 // Create a new user
 router.post('/addUser', (req, res)=>{
-    console.log(req)
-    console.log('create user request body', req.body);
+
     db.User
         .create(req.body)
         .then(user=>{
@@ -23,15 +22,38 @@ router.post('/addUser', (req, res)=>{
         .catch(err => res.json(err))
 });
 
+// update a user
+router.post('/editUser/:id', (req, res)=>{
+
+
+    db.User
+        .findOneAndUpdate({_id: req.params.id})
+        .then(user=>{
+            res.status(200).send({userId: user._id})
+        })
+        .catch(err => res.json(err))
+});
+
 //get all users
 router.get('/allUsers', (req, res)=>{
-
-    console.log(db.User.modelName);
 
     db.User
     .find({})
     .then((data) => res.status(200).send(data))
     .catch(err => res.status(422).json(err));
+});
+
+// Create a new user
+router.post('/deleteUser/:id', (req, res)=>{
+
+
+    db.User
+        .findOneAndDelete({_id: req.params.id})
+        .then(user=>{
+            console.log(`Created user ${user._id}, name: ${user.name}`);
+            res.status(200).send({userId: user._id})
+        })
+        .catch(err => res.json(err))
 });
 
 module.exports = router;

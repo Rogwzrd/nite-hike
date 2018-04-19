@@ -1,0 +1,34 @@
+const express = require('express');
+const router = express.Router();
+const db = require('../models');
+
+
+// middleware that is specific to this router
+router.use(function timeLog (req, res, next) {
+    console.log('Time: ', Date.now());
+    next()
+});
+
+
+// Create a new event
+router.post('/addEvent', (req, res)=>{
+
+    db.Event
+        .create(req.body)
+        .then(event=>{
+            console.log(`Created event ${event._id}, name: ${event.name}`);
+            res.status(200).send({eventId: event._id})
+        })
+        .catch(err => res.json(err))
+});
+
+//get all events
+router.get('/allEvents', (req, res)=>{
+
+    db.Event
+        .find({})
+        .then((data) => res.status(200).send(data))
+        .catch(err => res.status(422).json(err));
+});
+
+module.exports = router;

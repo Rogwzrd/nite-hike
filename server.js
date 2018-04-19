@@ -1,11 +1,12 @@
+require('dotenv').config();
+
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
 const { makeExecutableSchema } = require('graphql-tools');
 const mongoose = require('mongoose');
-const userRoute = require('./api/userApi');
-
+const routes = require('./api/index');
 const PORT = process.env.PORT || 4000;
 
 // const typeDefs = [`
@@ -49,8 +50,11 @@ app.use(bodyParser.json());
 //set public files
 app.use(express.static(path.join(__dirname, 'client/build')));
 
+//moving login logic to component
+app.use(express.static(path.join(__dirname, 'auth/')));
 
-// set mongoose database loaction
+
+// set mongoose database location
 mongoose.Promise = Promise;
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nightHikeDb";
 
@@ -72,7 +76,8 @@ db.once('open', function() {
 // app.use('/graphiql', graphiqlExpress({endpointURL: '/graphql'}));
 
 // set api routing
-app.use('/api/users', userRoute);
+app.use('/api/users', routes.userApi);
+app.use('/api/events', routes.eventApi);
 
 //send user to client build
 app.use('/', (req, res) => {

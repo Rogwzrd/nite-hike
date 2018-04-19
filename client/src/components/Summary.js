@@ -7,11 +7,11 @@ const Summary = props => (
         <h2>summary value {props.title}</h2>
        <h1>{props.value}</h1>
     </div>
-)
+);
 
 Summary.propTypes = {
     value: PropTypes.number.isRequired
-}
+};
 
 
 export default Summary

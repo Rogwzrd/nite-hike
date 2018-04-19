@@ -1,6 +1,6 @@
 import React from 'react'
-import Login from './LoginSpace'
-import svgMoon from '../images/moon.svg'
+import LoginSpace from './LoginSpace'
+import moonBootLogo from '../images/moonBootLogo.png'
 import { Link } from 'react-router-dom'
 
 const styles = {
@@ -8,10 +8,8 @@ const styles = {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        height: '50px',
         background: 'slateGrey',
-        padding: '0 20px',
-        boxShadow: '0 3px 6px rgba(256,256,256,0.16), 0 3px 6px rgba(256,256,256,0.23)'
+        padding: '5px 20px',
     },
     logoDiv:{
         display: 'flex',
@@ -20,8 +18,8 @@ const styles = {
         fontWeight: '700',
     },
     moon: {
-        height: '20px',
-        width: '20px'
+        height: '60px',
+        width: 'auto'
     },
     logoText:{
         margin: "0",
@@ -30,27 +28,27 @@ const styles = {
 
 };
 const Header = () =>(
-    <header style={styles.main}>
+    <nav style={styles.main} className={"navbar navbar-light bg-light"}>
         <div style={styles.logoDiv}>
-            <img style={styles.moon} src={svgMoon} alt={'moon'} className='App-logo'/>
-            <Link to={'/'}>
-                <p style={styles.logoText}>Night Hike</p>
+            <Link classname={'navbar-brand'} to={'/'}>
+                <img style={styles.moon} src={moonBootLogo} alt={'moon'}/>
+                Night Hike
             </Link>
         </div>
-        <div className={"btn-group"} role="group" aria-label="Basic example">
-                <Link to={"/profile"}>
-                    <button type="button" className="btn btn-secondary">
-                        Profile
-                    </button>
-                </Link>
-            <Link to={"/buttons"}>
-                <button type="button" className="btn btn-secondary">
-                    buttons
-                </button>
-            </Link>
-        </div>
-        <Login/>
-    </header>
+        {/*<div className={"btn-group"} role="group" aria-label="Basic example">*/}
+                {/*<Link to={"/profile"}>*/}
+                    {/*<button type="button" className="btn btn-secondary">*/}
+                        {/*Profile*/}
+                    {/*</button>*/}
+                {/*</Link>*/}
+            {/*<Link to={"/events"}>*/}
+                {/*<button type="button" className="btn btn-secondary">*/}
+                    {/*Events*/}
+                {/*</button>*/}
+            {/*</Link>*/}
+        {/*</div>*/}
+        <LoginSpace/>
+    </nav>
 );
 
 export default Header;

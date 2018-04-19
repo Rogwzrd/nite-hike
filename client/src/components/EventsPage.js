@@ -3,16 +3,17 @@ import {withRouter} from 'react-router-dom'
 import * as actionCreators from "../actions/actionCreators";
 import {bindActionCreators} from "redux";
 import { connect } from 'react-redux'
+import Event from './Event'
 import PropTypes from 'prop-types'
 
-class Profile extends Component{
+class EventsPage extends Component{
 
     componentDidMount=()=>{
-        this.props.fetchUsers();
+        this.props.fetchEvents();
     };
 
     render(){
-        const { error, loading, users} = this.props;
+        const { error, loading, events} = this.props;
         if  (error) {
             return <div>Error! {error.message} </div>
         }
@@ -24,8 +25,8 @@ class Profile extends Component{
         return(
             <div className={"container"}>
                 <div className={'row bg-light'}>
-                    { users.map(user =>
-                        <div className={'col-12 col-sm-6'} key={user._id}>{user.name}</div>
+                    { events.map(event =>
+                        <Event key={event._id} name={event.name} location={event.location} time={event.time} id={event._id}/>
                     ) }
                 </div>
             </div>
@@ -34,9 +35,9 @@ class Profile extends Component{
 }
 
 const mapStateToProps = state =>({
-    users: state.userReducer.users,
-    loading: state.userReducer.loading,
-    error: state.userReducer.error
+    events: state.eventsReducer.events,
+    loading: state.eventsReducer.loading,
+    error: state.eventsReducer.error
 
 });
 
@@ -44,11 +45,10 @@ const mapDispatchToProps = dispatch =>{
     return bindActionCreators(actionCreators, dispatch);
 };
 
-Profile.propTypes = {
-    users : PropTypes.array.isRequired,
+EventsPage.propTypes = {
+    events : PropTypes.array.isRequired,
     loading: PropTypes.bool.isRequired,
-    error: PropTypes.func
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Profile));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EventsPage));
 

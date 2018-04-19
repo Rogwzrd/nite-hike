@@ -1,19 +1,22 @@
-import React from 'react'
+import React, {Component} from 'react'
 
-const style = {
-    borderRadius: '5px'
+const styles = {
+    margin: "2px"
+};
 
+class LoginSpace extends Component {
+    render() {
+        return (
+            <div>
+                <button style={styles} className={"btn btn-outline-primary"}>
+                    sign up
+                </button>
+                <button style={styles} className={"btn btn-outline-success"}>
+                    login
+                </button>
+            </div>
+        )
+    }
 }
-
-const LoginSpace = (...props) =>(
-    <div>
-        <button style={style}>
-            sign up
-        </button>
-        <button style={style}>
-            login
-        </button>
-    </div>
-)
 
 export default LoginSpace;
