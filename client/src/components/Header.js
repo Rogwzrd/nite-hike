@@ -30,7 +30,7 @@ const styles = {
 const Header = () =>(
     <nav style={styles.main} className={"navbar navbar-light bg-light"}>
         <div style={styles.logoDiv}>
-            <Link classname={'navbar-brand'} to={'/'}>
+            <Link className={'navbar-brand'} to={'/'}>
                 <img style={styles.moon} src={moonBootLogo} alt={'moon'}/>
                 Night Hike
             </Link>
